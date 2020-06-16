@@ -90,7 +90,8 @@ module.exports = function(RED) {
 				}
 				detector.write(msg.payload);
 			} else {
-				node.error("Error with payload : not a Stream Readable nor a Buffer", msg);
+				if( node.config.debug == true || node.config.debug == "true" )
+					node.error("Error with payload : not a Stream Readable nor a Buffer", msg);
 				return;
 			}
 		});
